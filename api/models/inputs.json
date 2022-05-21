@@ -1,0 +1,123 @@
+{
+  "login": {
+    "title": "Welcome back",
+    "inputs": [
+      {
+        "type": "text",
+        "name": "username",
+        "label": "Username",
+        "regex": "[a-zA-Z]{1,32}",
+        "required": true
+      },
+      {
+        "type": "password",
+        "name": "password",
+        "label": "Password",
+        "required": true,
+        "regex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
+      },
+      {
+        "type": "checkbox",
+        "name": "remember",
+        "label": "Remember me"
+      },
+      {
+        "type": "button",
+        "label": "Login",
+        "method": "login"
+      },
+      {
+        "type": "link",
+        "to": "https://digiventures.la/",
+        "target": "_newblank",
+        "label": "¿Any problem? Contact us"
+      }
+    ]
+  },
+  "register": {
+    "title": "Welcome",
+    "inputs": [
+      {
+        "type": "text",
+        "name": "fullname",
+        "label": "Your full name",
+        "regex": "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$"
+      },
+
+      {
+        "type": "email",
+        "name": "email",
+        "label": "Email",
+        "regex": "^[w-.]+@([w-]+.)+[w-]{2,4}$",
+        "required": true
+      },
+      {
+        "type": "text",
+        "name": "username",
+        "label": "Username",
+        "regex": "[a-zA-Z]{1,32}",
+        "required": true
+      },
+      {
+        "type": "password",
+        "name": "password",
+        "label": "Password",
+        "regex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+        "required": true
+      },
+      {
+        "type": "password",
+        "name": "confirm_password",
+        "label": "Confirm your password",
+        "regex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
+        "conditions": {
+          "validations": [{ "comparision": "same", "input": "password" }]
+        },
+        "required": true
+      },
+      {
+        "type": "select",
+        "name": "country",
+        "label": "¿Where are you living?",
+        "options": [
+          { "value": "argentina", "label": "Argentina" },
+          { "value": "other", "label": "Other" }
+        ]
+      },
+      {
+        "type": "text",
+        "name": "custom_country",
+        "label": "Specify which country",
+        "conditions": {
+          "validations": [
+            {
+              "comparision": "not_includes",
+              "input": "country",
+              "values": ["argentina"]
+            }
+          ],
+          "render": [
+              {
+                "comparision": "includes",
+                "input": "country",
+                "values": ["other"]
+              }
+
+              
+          ]
+        }
+      },
+      {
+        "type": "button",
+        "label": "Create account",
+        "method": "register"
+      },
+      {
+        "type": "link",
+        "to": "https://digiventures.la/",
+        "target": "_newblank",
+        "label": "¿Any problem? Contact us"
+      }
+    ]
+  }
+}
